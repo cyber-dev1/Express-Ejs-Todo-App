@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">
+        <%="Todo App" %>
+    </h2>
+
+    <form action="/api/todos/create" method="post">
+        <input type="text" name="todo_title" id="todo_title" placeholder="todo_title">
+        <input type="text" name="todo_desc" id="todo_desc" placeholder="todo_desc">
+        <input type="checkbox" name="is_complate" id="is_complate" hidden>
+        <button type="submit"> Yuborish</button>
+    </form>
+
+    <ul>
+        <% todos.forEach((item)=> { %>
+            <li>
+                <input class="js-todo-title" type="text" value="<%=item.todo_title %>" data-id="<%=item.id %>">
+                <input class="js-todo-desc" type="text" value="<%=item.todo_desc %>" data-id="<%=item.id %>">
+                <input  class="js-is-complate"  type="checkbox" <%-item.is_complate ? "checked" : "" %> data-id="<%=item.id %>">
+            </li>
+        <% }) %>
+    </ul>
+
+    <script src="/js/index.js"></script>
+
+</body>
+</html>
