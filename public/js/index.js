@@ -2,6 +2,31 @@ let btn = document.querySelector(".del-btn");
 let title = document.querySelector(".js-todo-title")
 let desc = document.querySelector(".js-todo-desc");
 let checkbox = document.querySelector('.js-is-complate')
+let elForm = document.querySelector(".js-form") ;
+let elTitle = document.querySelector(".addTitle") ;
+let elDesc = document.querySelector('.addDesc') ;
+
+elForm.addEventListener("submit", async (evt) => {
+    evt.preventDefault() ;
+    try {
+        const req = await fetch("http://localhost:5000/api/todos/create", {
+            method : "POST",
+            headers : {
+                "Content-type" : "application/json"
+            },
+            body : JSON.stringify({
+                todo_title : elTitle.value,
+                todo_desc : elDesc.value, 
+            }),
+        });
+        if(req.ok){
+            const res = await req.json() ;
+            window.location.href ='/'
+        }
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 window.addEventListener("change", async (evt) => {
     if (evt.target.matches(".js-todo-title")) {

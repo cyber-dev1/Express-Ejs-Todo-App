@@ -17,7 +17,7 @@ class todosController {
                 newTodo.id = todos.length ? todos.at(-1).id + 1 : 1;
                 todos.push(newTodo);
                 await req.writeFile("todos.json", todos);
-                return res.redirect('/')
+                return res.status(201).json({message : "Todo successFully created", status : 201})
             } catch (error) {
                 return globalError(error, res)
             }

@@ -13,11 +13,11 @@
         <%="Todo App" %>
     </h2>
 
-    <form action="/api/todos/create" method="post">
-        <input type="text" name="todo_title" id="todo_title" placeholder="todo_title">
-        <input type="text" name="todo_desc" id="todo_desc" placeholder="todo_desc">
+    <form class="js-form">
+        <input class="addTitle" type="text" name="todo_title" id="todo_title" placeholder="todo_title">
+        <input class="addDesc" type="text" name="todo_desc" id="todo_desc" placeholder="todo_desc">
         <input type="checkbox" name="is_complate" id="is_complate" hidden>
-        <button type="submit"> Yuborish</button>
+        <button> Yuborish</button>
     </form>
 
     <ul style="list-style: none;">
