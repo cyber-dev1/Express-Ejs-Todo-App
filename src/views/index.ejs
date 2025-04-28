@@ -20,12 +20,13 @@
         <button type="submit"> Yuborish</button>
     </form>
 
-    <ul>
+    <ul style="list-style: none;">
         <% todos.forEach((item)=> { %>
             <li>
+                <input  class="js-is-complate"  type="checkbox" <%-item.is_complate ? "checked" : "" %> data-id="<%=item.id %>">
                 <input class="js-todo-title" type="text" value="<%=item.todo_title %>" data-id="<%=item.id %>">
                 <input class="js-todo-desc" type="text" value="<%=item.todo_desc %>" data-id="<%=item.id %>">
-                <input  class="js-is-complate"  type="checkbox" <%-item.is_complate ? "checked" : "" %> data-id="<%=item.id %>">
+                <button class="js-delete-btn" style="cursor: pointer;" data-id="<%=item.id %>">delete</button>
             </li>
         <% }) %>
     </ul>

@@ -11,12 +11,16 @@ class todosController {
             }
         };
         this.CREATE_TODO = async (req, res) => {
-            let todos = await req.readFile("todos.json");
-            let newTodo = req.body;
-            newTodo.id = todos.length ? todos.at(-1).id + 1 : 1;
-            todos.push(newTodo);
-            await req.writeFile("todos.json", todos);
-            return res.redirect('/')
+            try {
+                let todos = await req.readFile("todos.json");
+                let newTodo = req.body;
+                newTodo.id = todos.length ? todos.at(-1).id + 1 : 1;
+                todos.push(newTodo);
+                await req.writeFile("todos.json", todos);
+                return res.redirect('/')
+            } catch (error) {
+                return globalError(error, res)
+            }
         };
         this.UPDATE_TODOS = async (req, res) => {
             try {

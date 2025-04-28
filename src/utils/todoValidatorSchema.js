@@ -22,7 +22,7 @@ export const todoValidatorSchema = Joi.object({ todo_title, todo_desc , is_compl
 
 export const createTodoValidatorSchema = (data) => {
     let obj = {} ;
-    if('todo_title' in data) obj.todo_title = todo_title; 
+    if('todo_title' in data) obj.todo_title =  todo_title; 
     if('todo_desc' in data) obj.todo_desc = todo_desc; 
     if('is_complate' in data) obj.is_complate = is_complate; 
     return Joi.object(obj);
